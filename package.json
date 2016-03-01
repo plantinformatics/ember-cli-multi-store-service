@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-multi-store-service",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A service for managing multiple Ember Data stores in an Ember CLI app.",
   "directories": {
     "doc": "doc",
