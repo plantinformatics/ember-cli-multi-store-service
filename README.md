@@ -27,4 +27,45 @@ Not too bad, at least as far as I've tested it. There is a `switchInspectorStore
 
 ## How about some usage documentation?
 
-I'll do that soon enough.
+I'll do this with an example, another service that wraps this one to give a higher level history service.
+
+```js
+import Ember from 'ember';
+
+const HistoryManager = Ember.Service.extend({
+    // The service is registered under 'service:multi-store'
+    storeManager: Ember.inject.service('multi-store'),
+    // The list of registered names are observable with 'storeNames'
+    revisionIds: Ember.alias('storeManager.storeNames'),
+
+    getRecordRevision(record, revision) {
+        const storeManager = Ember.get(this, 'storeManager');
+        // Find if a store is registered with 'isStoreRegistered'
+        if (storeManager.isStoreRegistered(revision)) {
+            storeManager.registerStore(revision);
+        }
+
+        // Get a registered store by name with 'getStore'
+        const store = storeManager.getStore(revision);
+        return store.findRecord(record.constructor.modelName, record.id);
+    },
+
+    dropOldRevisions() {
+        const storeManager = Ember.get(this, 'storeManager');
+        Ember.get(this, 'revisionIds').forEach((revisionId) => {
+            // Unregister a store by name with 'unregisterStore'
+            storeManager.unregisterStore(revisionId);
+        });
+    },
+
+    inspectRevision(revisionId=null) {
+        // Switch the Ember Inspector with 'switchInspectorStore'
+        // Pass undefined or null to set it to the default store
+        // This uses private APIs and will probably break sometimes
+        // Use this sparingly and only for testing
+        Ember.get(this, 'storeManager').switchInspectorStore(revisionId);
+    }
+});
+
+export default HistoryManager;
+```
