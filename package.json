@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-multi-store-service",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A service for managing multiple Ember Data stores in an Ember CLI app.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -34,13 +34,17 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-getowner-polyfill": "1.0.0",
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.1.2",
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-data-addon",
+    "ember-data",
+    "store"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5"
