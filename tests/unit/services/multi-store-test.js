@@ -10,5 +10,25 @@ test('it exists', function(assert) {
 test('it starts empty', function(assert) {
     let service = this.subject();
     assert.deepEqual([], service.get('storeNames'));
+    assert.notOk(service.isStoreRegistered('foo'));
+    assert.notOk(service.getStore('foo'));
+    assert.notOk(service.unregisterStore('foo'));
+});
+
+test('it can register new stores', function(assert) {
+    let service = this.subject();
+    assert.ok(service.registerStore('foo'));
+    assert.deepEqual(['foo'], service.get('storeNames'));
+    assert.ok(service.isStoreRegistered('foo'));
+    assert.ok(service.getStore('foo'));
+});
+
+test('it can unregister stores', function(assert) {
+    let service = this.subject();
+    service.registerStore('foo');
+
+    assert.ok(service.unregisterStore('foo'));
+    assert.deepEqual([], service.get('storeNames'));
+    assert.notOk(service.isStoreRegistered('foo'));
     assert.notOk(service.getStore('foo'));
 });
