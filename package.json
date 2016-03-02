@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-multi-store-service",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A service for managing multiple Ember Data stores in an Ember CLI app.",
   "directories": {
     "doc": "doc",
@@ -11,10 +11,9 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository" :
-  {
-    "type" : "git",
-    "url" : "https://github.com/jonesetc/ember-cli-multi-store-service.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonesetc/ember-cli-multi-store-service.git"
   },
   "engines": {
     "node": ">= 0.10.0"
