@@ -1,6 +1,7 @@
 # Ember-cli-multi-store-service
 
-[![npm](https://img.shields.io/npm/v/ember-cli-multi-store-service.svg)]()
+[![npm](https://img.shields.io/npm/v/ember-cli-multi-store-service.svg)](https://www.npmjs.com/package/ember-cli-multi-store-service)
+[![Travis](https://img.shields.io/travis/jonesetc/ember-cli-multi-store-service.svg)](https://travis-ci.org/jonesetc/ember-cli-multi-store-service)
 
 This is a fairly simple Ember CLI addon for managing multiple Ember Data stores. Normally one store is all that an application needs, but sometimes life throws you curve balls.
 
