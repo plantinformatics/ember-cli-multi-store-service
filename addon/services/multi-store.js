@@ -36,14 +36,14 @@ export default Ember.Service.extend({
      * @param {string} name - The name of the store
      * @returns {boolean}
      */
-    registerStore(name) {
+    registerStore(name, options) {
         const storeNames = Ember.get(this, 'storeNames');
 
         if (storeNames.indexOf(name) === -1) {
             getOwner(this).register(`store:${name}`,
                 DS.Store.extend({
                     name: name
-                })
+                }, options)
             );
             storeNames.pushObject(name);
             return true;
