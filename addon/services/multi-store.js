@@ -40,11 +40,12 @@ export default Ember.Service.extend({
         const storeNames = Ember.get(this, 'storeNames');
 
         if (storeNames.indexOf(name) === -1) {
-            getOwner(this).register(`store:${name}`,
-                DS.Store.extend({
-                    name: name
-                }, options)
-            );
+            let owner = getOwner(this);
+            let store = owner.lookup("service:store")
+            let storeInstance = Object.create(store.__proto__.constructor).reopen({
+              name: name
+            }, options);
+            owner.register(`store:${name}`, storeInstance);
             storeNames.pushObject(name);
             return true;
         }
