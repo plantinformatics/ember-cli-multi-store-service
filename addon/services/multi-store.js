@@ -42,7 +42,7 @@ export default Ember.Service.extend({
         if (storeNames.indexOf(name) === -1) {
             let owner = getOwner(this);
             let store = owner.lookup("service:store")
-            let storeInstance = Object.create(Ember.get(store, "constructor")).reopen({
+            let storeInstance = Object.create(Ember.get(store, "constructor")).extend({
               name: name
             }, options || {});
             owner.register(`store:${name}`, storeInstance);
