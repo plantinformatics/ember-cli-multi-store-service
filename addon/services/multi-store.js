@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import getOwner from 'ember-getowner-polyfill';
+// import getOwner from 'ember-getowner-polyfill';
+const { getOwner } = Ember;
 
 export default Ember.Service.extend({
     /**
