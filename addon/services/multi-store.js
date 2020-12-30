@@ -1,6 +1,5 @@
-import Ember from 'ember';
-import DS from 'ember-data';
-// import getOwner from 'ember-getowner-polyfill';
+// uses global Ember
+
 const { getOwner } = Ember;
 
 export default Ember.Service.extend({
@@ -43,7 +42,8 @@ export default Ember.Service.extend({
         if (storeNames.indexOf(name) === -1) {
             let owner = getOwner(this);
             let store = owner.lookup("service:store")
-            let storeInstance = Object.create(Ember.get(store, "constructor")).extend({
+            console.log('registerStore', name, options, owner, store);
+            let storeInstance = Ember.get(store, "constructor").extend({
               name: name
             }, options || {});
             owner.register(`store:${name}`, storeInstance);
